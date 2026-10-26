@@ -48,11 +48,7 @@ body[data-md-color-scheme][data-md-color-primary] {
 .md-nav__title, .md-nav--primary .md-nav__title, .md-nav--secondary .md-nav__title,
 .md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link, .md-nav__link.md-nav__sticky { box-shadow: none; }
 
-/* content: 16/25, ~68 characters per line */
-.md-typeset { font-size: 16px; line-height: 25px; }
-.md-content__inner { max-width: 456px; }
-.md-typeset h1 { color: var(--ma-ink); }
-.md-typeset .admonition, .md-typeset details { font-size: 16px; }
+/* content (sizes and layout: styles/layout.css) */
 .md-typeset pre > code { border-radius: var(--ma-radius-md); }
 .md-typeset kbd { box-shadow: none; border: 1px solid var(--ma-line-strong); border-radius: var(--ma-radius-sm); }
 .md-typeset table:not([class]), .md-typeset .md-typeset__table table { box-shadow: none; border-radius: 0; }

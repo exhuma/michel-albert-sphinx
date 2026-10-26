@@ -12,8 +12,42 @@ stop. Links in running text are underlined, like `this one to Sphinx
 <https://www.sphinx-doc.org/>`_, and inline code such as ``sphinx-build``
 sits on an inset ground. **Strong text** uses weight 600, never heavier.
 
-- Lists keep the same 16/25 px rhythm as paragraphs.
+- Lists keep the same rhythm as paragraphs.
 - Second item, with a reference to :doc:`usage`.
+
+.. note::
+
+   This note follows the list, so on wide screens it sits in the margin
+   beside it.
+
+Margin notes
+------------
+
+A note, tip, hint or "see also" that directly follows a paragraph or a list
+moves into the margin beside it on wide screens. On narrow screens it follows
+the paragraph as a normal callout. Reading order is the same everywhere.
+
+.. tip::
+
+   Put a note right after the paragraph it belongs to.
+
+.. seealso::
+
+   A second note directly after the first stacks below it in the margin.
+
+A note stays in the text when it follows code, a table or a heading, or when
+it is nested in a list or another callout. Warnings and dangers always stay in
+the text, where nobody can skip them.
+
+.. note::
+   :class: ma-inline
+
+   The ``ma-inline`` class keeps this note in the text even though it follows
+   a paragraph.
+
+.. warning::
+
+   A warning after a paragraph stays in the text.
 
 Code
 ----

@@ -1,0 +1,83 @@
+/* Layout for sphinx-immaterial.
+   - Type follows the screen: sizes are relative to the theme's root, which grows at
+     1600 px and 2000 px (theme) and 2800 px (here). The measure is in rem tied to the
+     text size, so a line keeps ~65 characters at every size.
+   - One centred frame on every page: navigation, prose, an optional margin, the table
+     of contents. Without notes the contents column moves up beside the prose.
+   - Pages with margin notes get a margin column; code, tables and API signatures then
+     span prose + margin. Pages without notes stay compact.
+   - Margin notes: the build wraps a note with the block before it (div.ma-aside); on wide
+     screens the note sits beside that block, on narrow screens below it, in source order.
+   - The start page's first paragraph is a lede with a clay band (p.ma-lede).            */
+
+@media screen and (min-width: 175em) { html { font-size: 175%; } }   /* >= 2800 px */
+
+:root {
+  --ma-text: .8rem;                         /* body text size (16 px at the theme's 125 % root) */
+  --ma-measure: calc(var(--ma-text) * 29);  /* ~65 characters of Source Sans 3 */
+  --ma-gap: calc(var(--ma-text) * 2);
+  --ma-margin: calc(var(--ma-text) * 14);
+  --ma-wide: calc(var(--ma-measure) + var(--ma-gap) + var(--ma-margin));
+  --ma-sidebar: 12.1rem;                    /* the theme's sidebar width */
+  --ma-inner-pad: 2.4rem;                   /* the theme's content padding, both sides */
+}
+
+.md-typeset { font-size: var(--ma-text); line-height: 1.5625; }
+.md-typeset .admonition, .md-typeset details { font-size: 1em; }
+.md-typeset h1 { color: var(--ma-ink); }
+.md-content__inner.md-typeset { max-width: var(--ma-measure); }
+
+@media screen and (min-width: 76.25em) {
+  /* One frame width on every page, so navigation, header and search never move between
+     pages. Without margin notes the content column is just the prose and the table of
+     contents follows right after it; the spare width goes to the end of the row. */
+  .md-grid { max-width: calc(2 * var(--ma-sidebar) + var(--ma-inner-pad) + var(--ma-wide)); }
+  .md-main__inner { justify-content: flex-start; }
+  .md-content { flex: 0 0 calc(var(--ma-inner-pad) + var(--ma-measure)); max-width: none; }
+
+  /* pages with margin notes: the content column grows by the margin */
+  body:has(.ma-aside) .md-content { flex-basis: calc(var(--ma-inner-pad) + var(--ma-wide)); }
+
+  /* ... where code, tables and API signatures span prose + margin */
+  body:has(.ma-aside) .md-content__inner > div[class^="highlight"],
+  body:has(.ma-aside) .md-content__inner > .md-typeset__scrollwrap,
+  body:has(.ma-aside) .md-content__inner > table,
+  body:has(.ma-aside) .md-content__inner > dl.py > dt {
+    width: var(--ma-wide); max-width: none; box-sizing: border-box;
+  }
+
+  /* margin notes */
+  .md-content__inner > .ma-aside {
+    display: grid; grid-template-columns: var(--ma-measure) var(--ma-margin); column-gap: var(--ma-gap);
+    align-items: start; width: var(--ma-wide); max-width: none; margin: 0;
+  }
+  .ma-aside > :first-child { grid-column: 1; margin-top: 0; }
+  .ma-aside > .ma-aside-notes { grid-column: 2; display: grid; gap: 1.25em; padding-top: .25em; }
+  .ma-aside-notes > .admonition {
+    margin: 0 !important; padding: 0 !important; font-size: .875em !important; line-height: 1.5 !important;
+    background: transparent !important; border: 0 !important; border-top: 1px solid var(--ma-line) !important;
+    border-radius: 0 !important; box-shadow: none !important; overflow: visible;
+  }
+  .ma-aside-notes > .admonition > .admonition-title {
+    margin: 0 0 .25em !important; padding: .5em 0 0 !important; border: 0 !important;
+    font-size: .857em !important; letter-spacing: .06em !important; text-transform: uppercase !important;
+  }
+  .ma-aside-notes > .admonition > :last-child { margin-bottom: 0; }
+}
+
+/* narrow screens: the wrapper disappears, the note follows its block as a normal callout */
+@media screen and (max-width: 76.1875em) {
+  .ma-aside, .ma-aside-notes { display: contents; }
+}
+
+/* start page */
+.md-content__inner > h1:has(+ .ma-lede) {
+  font-size: 2.75em; line-height: 1.0909; letter-spacing: -.01em; margin-bottom: .35em;
+}
+.md-typeset .ma-lede { font-size: 1.1875em; line-height: 1.4737; color: var(--ma-ink-muted); max-width: 29em; margin-bottom: 1.75em; }
+.md-typeset .ma-lede::after {
+  content: ""; display: block; width: var(--ma-measure); height: 3px; margin-top: 1.1em; background: var(--ma-clay);
+}
+@media screen and (min-width: 76.25em) {
+  body:has(.ma-aside) .md-typeset .ma-lede::after { width: var(--ma-wide); }
+}

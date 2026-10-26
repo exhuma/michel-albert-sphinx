@@ -8,9 +8,9 @@
 /* ---------- typography ---------- */
 body { font-family: var(--ma-sans); font-size: 16px; line-height: 1.5625; color: var(--ma-ink); background: var(--ma-surface-100); }
 h1, h2, h3, h4, h5, h6 { font-family: var(--ma-sans) !important; font-weight: 600 !important; color: var(--ma-ink); }
-article h1, [role=main] h1, .body h1, main h1 { font-size: 32px; line-height: 38px; letter-spacing: -0.25px; }
-article h2, [role=main] h2, .body h2, main h2 { font-size: 24px; line-height: 30px; letter-spacing: 0; }
-article h3, [role=main] h3, .body h3, main h3 { font-size: 19px; line-height: 26px; letter-spacing: 0; }
+article h1, [role=main] h1, .body h1, main h1 { font-size: 2em; line-height: 1.1875; letter-spacing: -0.0078em; }
+article h2, [role=main] h2, .body h2, main h2 { font-size: 1.5em; line-height: 1.25; letter-spacing: 0; }
+article h3, [role=main] h3, .body h3, main h3 { font-size: 1.1875em; line-height: 1.3684; letter-spacing: 0; }
 strong, b, dt { font-weight: 600; }
 code, kbd, pre, samp, tt { font-family: var(--ma-mono) !important; font-variant-numeric: tabular-nums; }
 
@@ -28,7 +28,7 @@ code.literal, code.docutils { background: var(--ma-surface-300) !important; colo
 a code.literal, a code.docutils { color: var(--ma-accent) !important; }
 div.highlight, .highlight pre, div[class^="highlight-"] pre { background: var(--ma-surface-300) !important; color: var(--ma-ink) !important; }
 div.highlight { border: 1px solid var(--ma-line) !important; border-radius: var(--ma-radius-md) !important; box-shadow: none !important; }
-div.highlight pre { font-size: 14px !important; line-height: 21px !important; border: 0 !important; border-radius: var(--ma-radius-md) !important; }
+div.highlight pre { font-size: 0.875em !important; line-height: 1.5 !important; border: 0 !important; border-radius: var(--ma-radius-md) !important; }
 .highlight * { background-color: transparent !important; }
 .highlight .k, .highlight .kn, .highlight .kd, .highlight .kc, .highlight .kr, .highlight .kp, .highlight .kt, .highlight .ow { color: var(--ma-code-keyword) !important; font-weight: 600 !important; font-style: normal !important; }
 .highlight .s, .highlight .s1, .highlight .s2, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss, .highlight .dl { color: var(--ma-code-string) !important; font-style: normal !important; }
@@ -44,14 +44,14 @@ div.admonition, aside.admonition, .admonition {
   --ma-c-bg: var(--ma-accent-subtle); --ma-c-fg: var(--ma-accent);
   background: var(--ma-c-bg) !important; color: var(--ma-ink) !important;
   border: 1px solid var(--ma-line) !important; border-radius: var(--ma-radius-md) !important;
-  box-shadow: none !important; padding: 0 16px 12px !important; overflow: hidden;
+  box-shadow: none !important; padding: 0 1em 0.75em !important; overflow: hidden;
 }
 .admonition.warning, .admonition.caution, .admonition.attention { --ma-c-bg: var(--ma-warn-subtle); --ma-c-fg: var(--ma-warn); }
 .admonition.danger, .admonition.error { --ma-c-bg: var(--ma-critical-subtle); --ma-c-fg: var(--ma-critical); }
 .admonition.tip, .admonition.hint { --ma-c-bg: var(--ma-good-subtle); --ma-c-fg: var(--ma-good); }
 .admonition > .admonition-title, .admonition p.admonition-title {
   background: transparent !important; color: var(--ma-c-fg) !important; font-family: var(--ma-sans) !important;
-  font-size: 16px !important; font-weight: 600 !important; margin: 0 -16px 10px !important; padding: 8px 16px !important;
+  font-size: 1em !important; font-weight: 600 !important; margin: 0 -1em 0.625em !important; padding: 0.5em 1em !important;
   border-bottom: 1px solid var(--ma-line) !important; text-transform: none !important; letter-spacing: 0 !important;
 }
 .admonition > .admonition-title::before, .admonition > .admonition-title::after { display: none !important; content: none !important; }
@@ -59,14 +59,14 @@ div.admonition, aside.admonition, .admonition {
 
 /* ---------- tables ---------- */
 table.docutils { border-collapse: collapse !important; border: 1px solid var(--ma-line) !important; border-radius: 0 !important; box-shadow: none !important; }
-table.docutils th { background: var(--ma-surface-300) !important; color: var(--ma-ink) !important; font-size: 12px !important; line-height: 16px !important;
-  font-weight: 600 !important; letter-spacing: 0.8px !important; text-transform: uppercase !important; border: 1px solid var(--ma-line) !important; }
-table.docutils td { background: var(--ma-surface-200) !important; color: var(--ma-ink) !important; border: 1px solid var(--ma-line) !important; font-size: 14px; }
+table.docutils th { background: var(--ma-surface-300) !important; color: var(--ma-ink) !important; font-size: 0.75em !important; line-height: 1.3333 !important;
+  font-weight: 600 !important; letter-spacing: 0.0667em !important; text-transform: uppercase !important; border: 1px solid var(--ma-line) !important; }
+table.docutils td { background: var(--ma-surface-200) !important; color: var(--ma-ink) !important; border: 1px solid var(--ma-line) !important; font-size: 0.875em; }
 
 /* ---------- API entries ---------- */
 dl.py > dt, dl.function > dt, dl.class > dt, dl.method > dt, dl.attribute > dt, dl.exception > dt, dl.data > dt {
   background: var(--ma-surface-200) !important; color: var(--ma-ink) !important; border: 0 !important; border-left: 0 !important;
-  border-top: 1px solid var(--ma-line) !important; border-radius: 0 !important; font-family: var(--ma-mono) !important; font-size: 14px !important;
+  border-top: 1px solid var(--ma-line) !important; border-radius: 0 !important; font-family: var(--ma-mono) !important; font-size: 0.875em !important;
 }
 dl.field-list > dt { background: transparent !important; color: var(--ma-ink) !important; }
 .sig-name, .sig-prename { color: var(--ma-ink) !important; }
@@ -84,5 +84,5 @@ em.property, .property { color: var(--ma-accent) !important; font-style: normal 
 pre, pre > code, .highlight pre, pre.literal-block, pre.doctest-block {
   white-space: pre !important; overflow-wrap: normal !important; word-break: normal !important; }
 pre { overflow-x: auto; }
-div.highlight pre > code { font-size: 14px !important; line-height: 21px !important; }
+div.highlight pre > code { font-size: 1em !important; line-height: inherit !important; }
 div.highlight pre { margin: 0 !important; }

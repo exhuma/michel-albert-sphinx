@@ -8,6 +8,7 @@ Inputs:
     src/michel_albert_sphinx/tokens.json  the design system's tokens (copy of project/tokens.json)
     styles/base.css                       content rules shared by every theme
     styles/immaterial.css                 sphinx-immaterial adapter
+    styles/layout.css                     sizes, columns, margin notes, start page
 """
 
 from __future__ import annotations
@@ -93,6 +94,8 @@ def build() -> str:
         (ROOT / "styles" / "base.css").read_text(encoding="utf-8").strip(),
         "",
         (ROOT / "styles" / "immaterial.css").read_text(encoding="utf-8").strip(),
+        "",
+        (ROOT / "styles" / "layout.css").read_text(encoding="utf-8").strip(),
         "",
     ]
     return "\n".join(parts)

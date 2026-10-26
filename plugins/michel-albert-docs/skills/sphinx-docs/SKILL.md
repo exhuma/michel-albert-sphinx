@@ -77,6 +77,15 @@ Follow the design system's content rules:
 - Callouts: `note` for neutral information, `tip` for a recommended or
   confirmed path, `warning` for something to check, `danger` for something that
   fails or breaks. Use them sparingly.
+- Margin notes: a `note`, `tip`, `hint` or `seealso` placed directly after a
+  paragraph or list appears beside it in the margin on wide screens. Put each
+  note right after the paragraph it qualifies, keep it short (a few sentences),
+  and use it for asides the reader can skip. Anything the reader must not miss
+  is a `warning` or `danger`, which always stays in the text. A note after a
+  code block or table stays in the text; to force that elsewhere, add
+  `:class: ma-inline`.
+- The start page's first paragraph is shown as a lede: make it a one-paragraph
+  summary of what the project does.
 - Code blocks: always give a language (`.. code-block:: python`, `console` for
   shell sessions with a `$` prompt). Long lines are fine; code never wraps and
   scrolls inside its block, so do not hand-break lines to fit.
