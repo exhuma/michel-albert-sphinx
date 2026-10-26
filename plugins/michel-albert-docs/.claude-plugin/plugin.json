@@ -1,0 +1,10 @@
+{
+  "name": "michel-albert-docs",
+  "description": "Build Sphinx documentation with Michel Albert's design system (sphinx-immaterial + michel-albert-sphinx).",
+  "version": "0.1.0",
+  "author": {
+    "name": "Michel Albert"
+  },
+  "repository": "https://github.com/exhuma/michel-albert-sphinx",
+  "license": "MIT"
+}

@@ -1,0 +1,63 @@
+/* sphinx_immaterial adapter. Dark = the theme's own "slate" scheme (palette enabled in conf-sphinx_immaterial.py with
+   prefers-color-scheme media, so it follows the OS until the reader uses the header toggle; choosing light sets
+   scheme=default, which never receives dark tokens). Theme colours come from --md-* variables mapped to tokens. */
+/* Dark tokens are generated (see scripts/generate_css.py) under [data-md-color-scheme=slate]. */
+
+/* 0,2,1 beats the theme's [scheme][primary] and [primary]/[accent] palette rules */
+body[data-md-color-scheme][data-md-color-primary] {
+  --md-text-font-family: var(--ma-sans); --md-code-font-family: var(--ma-mono);
+  --md-primary-fg-color: var(--ma-surface-200); --md-primary-fg-color--light: var(--ma-surface-300); --md-primary-fg-color--dark: var(--ma-surface-300);
+  --md-primary-bg-color: var(--ma-ink); --md-primary-bg-color--light: var(--ma-ink-muted);
+  --md-accent-fg-color: var(--ma-accent-hover); --md-accent-fg-color--transparent: var(--ma-accent-subtle);
+  --md-accent-bg-color: var(--ma-on-accent); --md-accent-bg-color--light: var(--ma-on-accent);
+  --md-default-fg-color: var(--ma-ink); --md-default-fg-color--light: var(--ma-ink-muted);
+  --md-default-fg-color--lighter: var(--ma-line-strong); --md-default-fg-color--lightest: var(--ma-line);
+  --md-default-bg-color: var(--ma-surface-100); --md-default-bg-color--light: var(--ma-surface-100);
+  --md-default-bg-color--lighter: var(--ma-surface-200); --md-default-bg-color--lightest: var(--ma-surface-300);
+  --md-typeset-color: var(--ma-ink); --md-typeset-a-color: var(--ma-accent);
+  --md-code-fg-color: var(--ma-ink); --md-code-bg-color: var(--ma-surface-300);
+  --md-code-hl-color: var(--ma-accent); --md-code-hl-color--light: var(--ma-accent-subtle);
+  --md-code-hl-keyword-color: var(--ma-code-keyword); --md-code-hl-string-color: var(--ma-code-string);
+  --md-code-hl-number-color: var(--ma-code-number); --md-code-hl-comment-color: var(--ma-code-comment);
+  --md-code-hl-special-color: var(--ma-accent); --md-code-hl-function-color: var(--ma-ink); --md-code-hl-constant-color: var(--ma-ink);
+  --md-code-hl-name-color: var(--ma-ink); --md-code-hl-operator-color: var(--ma-ink-muted); --md-code-hl-punctuation-color: var(--ma-ink-muted);
+  --md-code-hl-generic-color: var(--ma-ink-muted); --md-code-hl-variable-color: var(--ma-ink);
+  --md-typeset-table-color: var(--ma-line); --md-typeset-table-color--light: var(--ma-surface-300);
+  --md-typeset-kbd-color: var(--ma-surface-200); --md-typeset-kbd-accent-color: var(--ma-surface-200); --md-typeset-kbd-border-color: var(--ma-line-strong);
+  --md-typeset-mark-color: var(--ma-warn-subtle); --md-warning-fg-color: var(--ma-ink); --md-warning-bg-color: var(--ma-warn-subtle);
+  --md-admonition-fg-color: var(--ma-ink); --md-admonition-bg-color: var(--ma-surface-200);
+  --md-footer-fg-color: var(--ma-ink); --md-footer-fg-color--light: var(--ma-ink-muted); --md-footer-fg-color--lighter: var(--ma-ink-muted);
+  --md-footer-bg-color: var(--ma-surface-200); --md-footer-bg-color--dark: var(--ma-surface-200);
+  --md-shadow-z1: none; --md-shadow-z2: none; --md-shadow-z3: none;
+  --objinfo-icon-bg-default: var(--ma-surface-100); --objinfo-icon-fg-default: var(--ma-ink-muted);
+  --objinfo-icon-fg-procedure: var(--ma-accent); --objinfo-icon-fg-data: var(--ma-ink-muted);
+  --objinfo-icon-fg-sub-data: var(--ma-ink-muted); --objinfo-icon-fg-alias: var(--ma-clay);
+}
+
+/* header, search */
+.md-header, .md-header--shadow { box-shadow: none; border-bottom: 1px solid var(--ma-line); }
+.md-search__form { background-color: var(--ma-surface-200); border: 1px solid var(--ma-line-strong); border-radius: var(--ma-radius-md); box-shadow: none; }
+.md-search__input, .md-search__input::placeholder, .md-search__icon { color: var(--ma-ink-muted); }
+.md-search__input { color: var(--ma-ink); }
+[data-md-toggle=search]:checked ~ .md-header .md-search__form { border-radius: var(--ma-radius-md) var(--ma-radius-md) 0 0; box-shadow: none; }
+
+/* navigation */
+.md-nav__link, .md-nav__title { color: var(--ma-ink-muted); text-decoration: none; }
+.md-nav__item .md-nav__link--active { color: var(--ma-ink); background: var(--ma-accent-subtle); border-radius: var(--ma-radius-md); font-weight: 600; }
+.md-nav__link:is(:hover, :focus), .md-nav__link--active:hover { color: var(--ma-ink); }
+.md-nav__title, .md-nav--primary .md-nav__title, .md-nav--secondary .md-nav__title,
+.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link, .md-nav__link.md-nav__sticky { box-shadow: none; }
+
+/* content: 16/25, ~68 characters per line */
+.md-typeset { font-size: 16px; line-height: 25px; }
+.md-content__inner { max-width: 456px; }
+.md-typeset h1 { color: var(--ma-ink); }
+.md-typeset .admonition, .md-typeset details { font-size: 16px; }
+.md-typeset pre > code { border-radius: var(--ma-radius-md); }
+.md-typeset kbd { box-shadow: none; border: 1px solid var(--ma-line-strong); border-radius: var(--ma-radius-sm); }
+.md-typeset table:not([class]), .md-typeset .md-typeset__table table { box-shadow: none; border-radius: 0; }
+
+/* footer */
+.md-footer { border-top: 1px solid var(--ma-line); }
+.md-footer-meta { border-top: 1px solid var(--ma-line); }
+html .md-footer-meta.md-typeset a { color: var(--ma-accent); text-decoration: underline; }

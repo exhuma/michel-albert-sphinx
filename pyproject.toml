@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "michel-albert-sphinx"
+version = "0.1.0"
+description = "Michel Albert's design system for Sphinx documentation, on sphinx-immaterial."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE", "src/michel_albert_sphinx/static/fonts/OFL-*.txt"]
+authors = [{ name = "Michel Albert" }]
+classifiers = [
+  "Framework :: Sphinx :: Extension",
+  "Framework :: Sphinx :: Theme",
+  "Programming Language :: Python :: 3",
+  "Topic :: Documentation :: Sphinx",
+]
+dependencies = [
+  "sphinx>=7",
+  "sphinx-immaterial>=0.13,<0.14",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.urls]
+Source = "https://github.com/exhuma/michel-albert-sphinx"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/michel_albert_sphinx"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "styles", "scripts", "tests", "docs", "README.md", "LICENSE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

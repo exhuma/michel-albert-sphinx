@@ -1,0 +1,14 @@
+{
+  "name": "michel-albert",
+  "description": "Claude Code plugins for Michel Albert's projects.",
+  "owner": {
+    "name": "Michel Albert"
+  },
+  "plugins": [
+    {
+      "name": "michel-albert-docs",
+      "source": "./plugins/michel-albert-docs",
+      "description": "Build Sphinx documentation with Michel Albert's design system."
+    }
+  ]
+}

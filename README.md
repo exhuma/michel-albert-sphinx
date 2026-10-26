@@ -1,0 +1,70 @@
+# michel-albert-sphinx
+
+Michel Albert's design system for Sphinx documentation. One line in `conf.py`
+gives a project the same type, colours and shapes as the rest of the identity,
+in light and dark, on the [sphinx-immaterial](https://jbms.github.io/sphinx-immaterial/) theme.
+
+## Use it in a project
+
+Add the dependency (pin a tag):
+
+```toml
+[project.optional-dependencies]
+docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.1.0"]
+```
+
+Add the extension to `conf.py` and leave `html_theme` unset:
+
+```python
+extensions = ["michel_albert_sphinx"]
+```
+
+Build with warnings as errors:
+
+```console
+sphinx-build -W --keep-going -b html docs docs/_build/html
+```
+
+The extension enables `sphinx_immaterial`, sets a light/dark palette that follows
+the reader's OS, turns off Google Fonts (the fonts ship with the package), and adds
+the stylesheet. A project's own `html_theme_options` win key by key.
+
+## What it looks like
+
+- Source Sans 3 for text, Source Code Pro for code, headings at weight 600.
+- Warm brown neutrals, one teal accent, flat surfaces with 1px hairlines, 4px radii.
+- Running text at 16/25 px in a column of about 65 characters.
+- Links in running text are underlined; navigation links are not.
+- Code and other preformatted text never wrap. Long lines scroll inside the block,
+  which can be reached with Tab and scrolled with the arrow keys.
+- Callouts: `note` (accent), `tip`/`hint` (done), `warning`/`caution` (check),
+  `danger`/`error` (blocked).
+
+`docs/style-reference.rst` shows every styled element on one page.
+
+## Change the look
+
+Never add CSS to a project; change it here.
+
+1. Copy the design system's `project/tokens.json` to `src/michel_albert_sphinx/tokens.json`,
+   or edit `styles/base.css` (content rules) or `styles/immaterial.css` (theme adapter).
+2. Regenerate the shipped stylesheet: `python scripts/generate_css.py`.
+3. Run `pytest`. It checks WCAG contrast for every colour pair in both themes, builds
+   these docs with `-W`, and fails if the generated stylesheet is stale.
+4. Bump `version` in `pyproject.toml`, tag `vX.Y.Z`, push.
+
+## Claude Code
+
+This repository is also a Claude Code plugin marketplace. The `michel-albert-docs`
+plugin adds a skill that makes Claude Code use this package whenever it creates,
+builds or restyles Sphinx documentation.
+
+```console
+claude plugin marketplace add exhuma/michel-albert-sphinx
+claude plugin install michel-albert-docs@michel-albert
+```
+
+## Licences
+
+Code: MIT (see `LICENSE`). Fonts: SIL Open Font License 1.1
+(`src/michel_albert_sphinx/static/fonts/OFL-*.txt`).
