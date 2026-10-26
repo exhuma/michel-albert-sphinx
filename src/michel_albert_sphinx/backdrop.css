@@ -1,0 +1,27 @@
+/* Backdrop: the reading frame becomes a raised sheet (surface-200, hairline sides) and the
+   space outside it shows the project's contour lines, drawn in `line` with accent lines in
+   `clay`. Only visible where the screen is wider than the frame; never behind text.
+   The two tiles are set below as --ma-pattern and --ma-pattern-accent (generated per project). */
+
+body { background: var(--ma-surface-100); }
+.md-container, .md-main { background: transparent !important; }
+
+@media screen and (min-width: 76.25em) {
+  body::before, body::after {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    -webkit-mask-repeat: repeat; mask-repeat: repeat;
+    -webkit-mask-size: 1200px 1200px; mask-size: 1200px 1200px;
+  }
+  body::before { background: var(--ma-line); -webkit-mask-image: var(--ma-pattern); mask-image: var(--ma-pattern); }
+  body::after { background: var(--ma-clay); opacity: .35; -webkit-mask-image: var(--ma-pattern-accent); mask-image: var(--ma-pattern-accent); }
+
+  .md-main__inner.md-grid {
+    --md-default-bg-color: var(--ma-surface-200);  /* sticky titles and panels inside the frame */
+    background: var(--ma-surface-200);
+    box-shadow: -1px 0 0 var(--ma-line), 1px 0 0 var(--ma-line);
+    margin-top: 0; padding-top: 1.2rem; min-height: calc(100vh - 2.4rem);
+  }
+  .md-header, .md-footer, .md-footer-meta { background: var(--ma-surface-200) !important; }
+  .md-sidebar { background: transparent; }
+}
+@media print { body::before, body::after { display: none; } }

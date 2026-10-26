@@ -9,7 +9,7 @@ Add the package to the project's documentation dependencies:
 .. code-block:: toml
 
    [project.optional-dependencies]
-   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.2.0"]
+   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.3.0"]
 
 Configure
 ---------
@@ -70,6 +70,15 @@ Options
 ``michel_albert_home_header``
    ``True`` by default. Styles the start page's first paragraph as a lede with
    a clay band. ``False`` turns it off.
+
+``michel_albert_backdrop``
+   ``True`` by default. On screens wider than the frame, the page sits on a
+   raised sheet over contour lines. ``False`` turns it off.
+
+``michel_albert_backdrop_seed``
+   The contour lines are generated from this text, by default the ``project``
+   name, so each project gets its own terrain. The same seed always gives the
+   same lines.
 
 Change the look
 ---------------

@@ -50,6 +50,8 @@ decision. Projects only add it as an extension.
    ]
    ```
 
+   `project` also seeds the contour-line backdrop, so use the project's real
+   name. Don't set `michel_albert_backdrop_seed` unless Michel asks.
 4. Create `docs/index.rst` with a one-paragraph summary of what the project
    does and a `toctree` of the pages.
 5. If the project has `.readthedocs.yaml`, make sure it installs the `docs`

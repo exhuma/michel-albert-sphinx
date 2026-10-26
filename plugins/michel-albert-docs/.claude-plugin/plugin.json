@@ -1,7 +1,7 @@
 {
   "name": "michel-albert-docs",
   "description": "Build Sphinx documentation with Michel Albert's design system (sphinx-immaterial + michel-albert-sphinx).",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Michel Albert"
   },

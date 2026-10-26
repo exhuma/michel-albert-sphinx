@@ -10,7 +10,7 @@ Add the dependency (pin a tag):
 
 ```toml
 [project.optional-dependencies]
-docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.2.0"]
+docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.3.0"]
 ```
 
 Add the extension to `conf.py` and leave `html_theme` unset:
@@ -42,6 +42,9 @@ the stylesheet. A project's own `html_theme_options` win key by key.
   beside it on wide screens, and below it on narrow ones; reading order never changes.
   On pages with margin notes, code, tables and API signatures span text and margin.
 - The start page's first paragraph is a lede with a clay band.
+- On screens wider than the frame, the page is a raised sheet over topographic contour
+  lines. The terrain is generated from the project name, so every project gets its own
+  in the same style; the text never sits on the pattern.
 - Links in running text are underlined; navigation links are not.
 - Code and other preformatted text never wrap. Long lines scroll inside the block,
   which can be reached with Tab and scrolled with the arrow keys.
@@ -56,6 +59,8 @@ Options in `conf.py`:
 |---|---|---|
 | `michel_albert_margin_notes` | `True` | Notes after prose go to the margin. |
 | `michel_albert_home_header` | `True` | The start page's first paragraph is a lede. |
+| `michel_albert_backdrop` | `True` | Contour-line backdrop outside the frame. |
+| `michel_albert_backdrop_seed` | `project` | Seed for the backdrop's terrain. |
 
 Give a single note `:class: ma-inline` to keep it in the text.
 
