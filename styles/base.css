@@ -1,10 +1,5 @@
 /* Content rules shared by every theme: type, links, code, callouts, tables, API entries, focus. */
 
-/* code colours: not in the design system yet — aliases of existing tokens, re-resolved on every element
-   so a theme's dark-mode selector below :root picks up the dark values */
-*, ::before, ::after { --ma-code-keyword: var(--ma-accent); --ma-code-string: var(--ma-good);
-  --ma-code-number: var(--ma-warn); --ma-code-comment: var(--ma-ink-muted); --ma-code-error: var(--ma-critical); }
-
 /* ---------- typography ---------- */
 body { font-family: var(--ma-sans); font-size: 16px; line-height: 1.5625; color: var(--ma-ink); background: var(--ma-surface-100); }
 h1, h2, h3, h4, h5, h6 { font-family: var(--ma-sans) !important; font-weight: 600 !important; color: var(--ma-ink); }
@@ -30,14 +25,8 @@ div.highlight, .highlight pre, div[class^="highlight-"] pre { background: var(--
 div.highlight { border: 1px solid var(--ma-line) !important; border-radius: var(--ma-radius-md) !important; box-shadow: none !important; }
 div.highlight pre { font-size: 0.875em !important; line-height: 1.5 !important; border: 0 !important; border-radius: var(--ma-radius-md) !important; }
 .highlight * { background-color: transparent !important; }
-.highlight .k, .highlight .kn, .highlight .kd, .highlight .kc, .highlight .kr, .highlight .kp, .highlight .kt, .highlight .ow { color: var(--ma-code-keyword) !important; font-weight: 600 !important; font-style: normal !important; }
-.highlight .s, .highlight .s1, .highlight .s2, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss, .highlight .dl { color: var(--ma-code-string) !important; font-style: normal !important; }
-.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo, .highlight .mb, .highlight .il { color: var(--ma-code-number) !important; }
-.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .ch, .highlight .cp, .highlight .cpf, .highlight .gp, .highlight .go { color: var(--ma-code-comment) !important; font-style: italic !important; font-weight: 400 !important; }
-.highlight .gp, .highlight .go { font-style: normal !important; }
-.highlight .err, .highlight .gr, .highlight .gt { color: var(--ma-code-error) !important; border: 0 !important; }
-.highlight .n, .highlight .na, .highlight .nb, .highlight .bp, .highlight .nv, .highlight .vi, .highlight .vc, .highlight .vg, .highlight .o, .highlight .p, .highlight .w, .highlight .nn, .highlight .nx, .highlight .ni, .highlight .ne, .highlight .nl, .highlight .nt, .highlight .nd { color: var(--ma-ink) !important; font-weight: 400 !important; font-style: normal !important; }
-.highlight .nf, .highlight .nc, .highlight .fm { color: var(--ma-ink) !important; font-weight: 600 !important; }
+/* token colours: generated from code_roles.py (scripts/generate_css.py) */
+.highlight .err { border: 0 !important; }
 
 /* ---------- callouts (admonitions): tinted, with a title bar ---------- */
 div.admonition, aside.admonition, .admonition {

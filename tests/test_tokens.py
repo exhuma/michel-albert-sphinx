@@ -6,7 +6,17 @@ from pathlib import Path
 import pytest
 
 TOKENS = json.loads((Path(__file__).parent.parent / "src/michel_albert_sphinx/tokens.json").read_text())
-COLORS = {t["name"]: t["value"] for t in TOKENS["color"]["tokens"]}
+RAW = {t["name"]: t["value"] for t in TOKENS["color"]["tokens"]}
+
+
+def resolve(name: str, theme: str) -> str:
+    v = RAW[name]
+    v = v[theme] if isinstance(v, dict) else v
+    return resolve(v[1:-1], theme) if v.startswith("{") else v
+
+
+COLORS = {name: {theme: resolve(name, theme) for theme in ("light", "dark")} for name in RAW}
+CODE = sorted(n for n in RAW if n.startswith("code-"))
 
 # (foreground, background, minimum ratio): text 4.5:1, control borders and the focus ring 3:1.
 PAIRS = [
@@ -49,3 +59,18 @@ def contrast(a: str, b: str) -> float:
 def test_contrast(theme, fg, bg, minimum):
     ratio = contrast(COLORS[fg][theme], COLORS[bg][theme])
     assert ratio >= minimum, f"{fg} on {bg} ({theme}) is {ratio:.2f}:1, needs {minimum}:1"
+
+
+@pytest.mark.parametrize("theme", ["light", "dark"])
+@pytest.mark.parametrize("token", CODE)
+def test_code_colours_on_code_background(theme, token):
+    ratio = contrast(COLORS[token][theme], COLORS["surface-300"][theme])
+    assert ratio >= 4.5, f"{token} on surface-300 ({theme}) is {ratio:.2f}:1"
+
+
+def test_code_tokens_are_their_own_colours():
+    """Code colours never reuse the state colours or clay (they carry meaning elsewhere)."""
+    reserved = {COLORS[n][t] for n in ("good", "warn", "clay") for t in ("light", "dark")}
+    for token in CODE:
+        for theme in ("light", "dark"):
+            assert COLORS[token][theme] not in reserved, (token, theme)

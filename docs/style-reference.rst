@@ -68,6 +68,52 @@ scrolls can be reached with Tab and scrolled with the arrow keys.
 
    $ sphinx-build -W --keep-going -b html docs docs/_build/html
 
+Every syntax role has its own colour from the design system's ``code-*``
+tokens: keywords, constants, built-ins, function and class names, keys,
+decorators, strings, numbers, comments, operators, other names and errors.
+
+.. code-block:: python
+
+   from dataclasses import dataclass
+
+
+   @dataclass(frozen=True)
+   class Entry:
+       """One directory entry."""
+
+       dn: str
+       retries: int = 3
+
+       def name(self, raw: bytes) -> str:
+           # decode, replacing what cannot be mapped
+           text = raw.decode("t.61", errors="replace")
+           if text is None or not text.strip():
+               raise ValueError(f"empty name in {self.dn!r}")
+           return text
+
+
+   print(len(Entry("cn=cafe").name(b"Caf\xc2e")))
+
+.. code-block:: yaml
+
+   - name: Publish documentation
+     hosts: vps
+     vars:
+       replicas: 2
+       tls: true
+       docs_root: /srv/docs
+
+.. code-block:: json
+
+   {"name": "t61codec", "aliases": ["t61", "t.61"], "strict": true, "replacement": null, "retries": 3}
+
+.. code-block:: sql
+
+   SELECT e.dn, count(*) AS failures
+   FROM ldap_entry AS e
+   WHERE e.active IS TRUE AND e.retries >= 3
+   ORDER BY failures DESC;
+
 Callouts
 --------
 

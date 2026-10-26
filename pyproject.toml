@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "michel-albert-sphinx"
-version = "0.3.1"
+version = "0.4.0"
 description = "Michel Albert's design system for Sphinx documentation, on sphinx-immaterial."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -24,6 +24,10 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest>=8"]
+
+[project.entry-points."pygments.styles"]
+michel-albert-light = "michel_albert_sphinx.pygments_styles:MichelAlbertLight"
+michel-albert-dark = "michel_albert_sphinx.pygments_styles:MichelAlbertDark"
 
 [project.urls]
 Source = "https://github.com/exhuma/michel-albert-sphinx"

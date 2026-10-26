@@ -19,9 +19,9 @@ body[data-md-color-scheme][data-md-color-primary] {
   --md-code-hl-color: var(--ma-accent); --md-code-hl-color--light: var(--ma-accent-subtle);
   --md-code-hl-keyword-color: var(--ma-code-keyword); --md-code-hl-string-color: var(--ma-code-string);
   --md-code-hl-number-color: var(--ma-code-number); --md-code-hl-comment-color: var(--ma-code-comment);
-  --md-code-hl-special-color: var(--ma-accent); --md-code-hl-function-color: var(--ma-ink); --md-code-hl-constant-color: var(--ma-ink);
-  --md-code-hl-name-color: var(--ma-ink); --md-code-hl-operator-color: var(--ma-ink-muted); --md-code-hl-punctuation-color: var(--ma-ink-muted);
-  --md-code-hl-generic-color: var(--ma-ink-muted); --md-code-hl-variable-color: var(--ma-ink);
+  --md-code-hl-special-color: var(--ma-code-decorator); --md-code-hl-function-color: var(--ma-code-function); --md-code-hl-constant-color: var(--ma-code-constant);
+  --md-code-hl-name-color: var(--ma-code-name); --md-code-hl-operator-color: var(--ma-code-operator); --md-code-hl-punctuation-color: var(--ma-code-operator);
+  --md-code-hl-generic-color: var(--ma-code-comment); --md-code-hl-variable-color: var(--ma-code-name);
   --md-typeset-table-color: var(--ma-line); --md-typeset-table-color--light: var(--ma-surface-300);
   --md-typeset-kbd-color: var(--ma-surface-200); --md-typeset-kbd-accent-color: var(--ma-surface-200); --md-typeset-kbd-border-color: var(--ma-line-strong);
   --md-typeset-mark-color: var(--ma-warn-subtle); --md-warning-fg-color: var(--ma-ink); --md-warning-bg-color: var(--ma-warn-subtle);

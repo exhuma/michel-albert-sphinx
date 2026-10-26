@@ -17,6 +17,9 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+from michel_albert_sphinx.code_roles import css_rules  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 PKG = ROOT / "src" / "michel_albert_sphinx"
 OUT = PKG / "static" / "michel-albert.css"
@@ -62,9 +65,11 @@ def token_blocks(tokens: dict) -> str:
 
     def value(tok: dict, theme: str) -> str:
         v = tok["value"]
-        if isinstance(v, str):
-            return v
-        return v.get(theme, v[themes[0]])
+        if isinstance(v, dict):
+            v = v.get(theme, v[themes[0]])
+        if v.startswith("{") and v.endswith("}"):  # alias of another colour token
+            return f"var(--ma-{v[1:-1]})"
+        return v
 
     families = tokens["type"]["families"]
     radii = {t["name"]: t["value"] for t in tokens["radius"]["tokens"]}
@@ -92,6 +97,9 @@ def build() -> str:
         token_blocks(tokens),
         "",
         (ROOT / "styles" / "base.css").read_text(encoding="utf-8").strip(),
+        "",
+        "/* syntax colours by role (src/michel_albert_sphinx/code_roles.py) */",
+        css_rules(),
         "",
         (ROOT / "styles" / "immaterial.css").read_text(encoding="utf-8").strip(),
         "",

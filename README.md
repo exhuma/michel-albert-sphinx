@@ -10,7 +10,7 @@ Add the dependency (pin a tag):
 
 ```toml
 [project.optional-dependencies]
-docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.3.1"]
+docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.4.0"]
 ```
 
 Add the extension to `conf.py` and leave `html_theme` unset:
@@ -50,6 +50,21 @@ the stylesheet. A project's own `html_theme_options` win key by key.
   which can be reached with Tab and scrolled with the arrow keys.
 - Callouts: `note` (accent), `tip`/`hint` (done), `warning`/`caution` (check),
   `danger`/`error` (blocked).
+- Syntax highlighting uses the design system's `code-*` tokens: teal keywords, plum
+  constants, dark-clay built-ins (`print`, `len`, `self`), slate function and class
+  names and data keys, ochre numbers and decorators, moss strings, muted comments.
+
+## Pygments styles
+
+The same colours are installed as Pygments styles, for any tool that highlights with
+Pygments (other Sphinx themes, MkDocs, Jupyter, the terminal):
+
+```console
+pygmentize -O style=michel-albert-dark -f terminal256 example.py
+```
+
+`michel-albert-light` and `michel-albert-dark` are built from `tokens.json` and the same
+role table (`code_roles.py`) as the stylesheet.
 
 `docs/style-reference.rst` shows every styled element on one page.
 
@@ -69,8 +84,9 @@ Give a single note `:class: ma-inline` to keep it in the text.
 Never add CSS to a project; change it here.
 
 1. Copy the design system's `project/tokens.json` to `src/michel_albert_sphinx/tokens.json`,
-   or edit `styles/base.css` (content rules), `styles/immaterial.css` (theme colours)
-   or `styles/layout.css` (sizes, columns, margin notes).
+   or edit `styles/base.css` (content rules), `styles/immaterial.css` (theme colours),
+   `styles/layout.css` (sizes, columns, margin notes) or
+   `src/michel_albert_sphinx/code_roles.py` (which syntax role gets which code token).
 2. Regenerate the shipped stylesheet: `python scripts/generate_css.py`.
 3. Run `pytest`. It checks WCAG contrast for every colour pair in both themes, builds
    these docs with `-W`, and fails if the generated stylesheet is stale.

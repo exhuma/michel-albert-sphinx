@@ -34,6 +34,18 @@
   --ma-good-subtle: #e1ecd9;
   --ma-warn-subtle: #f3e6c6;
   --ma-critical-subtle: #f3dcd5;
+  --ma-code-keyword: var(--ma-accent);
+  --ma-code-constant: #844a73;
+  --ma-code-builtin: #875030;
+  --ma-code-function: #426081;
+  --ma-code-key: var(--ma-code-function);
+  --ma-code-decorator: var(--ma-code-number);
+  --ma-code-string: #4f6426;
+  --ma-code-number: #79571c;
+  --ma-code-comment: var(--ma-ink-muted);
+  --ma-code-operator: var(--ma-ink-muted);
+  --ma-code-name: var(--ma-ink);
+  --ma-code-error: var(--ma-critical);
   --ma-sans: "Source Sans 3", "Noto Sans", system-ui, sans-serif;
   --ma-mono: "Source Code Pro", ui-monospace, Menlo, monospace;
   --ma-radius-sm: 2px; --ma-radius-md: 4px;
@@ -59,14 +71,21 @@
   --ma-good-subtle: #232b1f;
   --ma-warn-subtle: #2d2515;
   --ma-critical-subtle: #33211c;
+  --ma-code-keyword: var(--ma-accent);
+  --ma-code-constant: #c4a7bb;
+  --ma-code-builtin: #c9a692;
+  --ma-code-function: #a0b0c2;
+  --ma-code-key: var(--ma-code-function);
+  --ma-code-decorator: var(--ma-code-number);
+  --ma-code-string: #9fb671;
+  --ma-code-number: #c8a972;
+  --ma-code-comment: var(--ma-ink-muted);
+  --ma-code-operator: var(--ma-ink-muted);
+  --ma-code-name: var(--ma-ink);
+  --ma-code-error: var(--ma-critical);
 }
 
 /* Content rules shared by every theme: type, links, code, callouts, tables, API entries, focus. */
-
-/* code colours: not in the design system yet — aliases of existing tokens, re-resolved on every element
-   so a theme's dark-mode selector below :root picks up the dark values */
-*, ::before, ::after { --ma-code-keyword: var(--ma-accent); --ma-code-string: var(--ma-good);
-  --ma-code-number: var(--ma-warn); --ma-code-comment: var(--ma-ink-muted); --ma-code-error: var(--ma-critical); }
 
 /* ---------- typography ---------- */
 body { font-family: var(--ma-sans); font-size: 16px; line-height: 1.5625; color: var(--ma-ink); background: var(--ma-surface-100); }
@@ -93,14 +112,8 @@ div.highlight, .highlight pre, div[class^="highlight-"] pre { background: var(--
 div.highlight { border: 1px solid var(--ma-line) !important; border-radius: var(--ma-radius-md) !important; box-shadow: none !important; }
 div.highlight pre { font-size: 0.875em !important; line-height: 1.5 !important; border: 0 !important; border-radius: var(--ma-radius-md) !important; }
 .highlight * { background-color: transparent !important; }
-.highlight .k, .highlight .kn, .highlight .kd, .highlight .kc, .highlight .kr, .highlight .kp, .highlight .kt, .highlight .ow { color: var(--ma-code-keyword) !important; font-weight: 600 !important; font-style: normal !important; }
-.highlight .s, .highlight .s1, .highlight .s2, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss, .highlight .dl { color: var(--ma-code-string) !important; font-style: normal !important; }
-.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo, .highlight .mb, .highlight .il { color: var(--ma-code-number) !important; }
-.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .ch, .highlight .cp, .highlight .cpf, .highlight .gp, .highlight .go { color: var(--ma-code-comment) !important; font-style: italic !important; font-weight: 400 !important; }
-.highlight .gp, .highlight .go { font-style: normal !important; }
-.highlight .err, .highlight .gr, .highlight .gt { color: var(--ma-code-error) !important; border: 0 !important; }
-.highlight .n, .highlight .na, .highlight .nb, .highlight .bp, .highlight .nv, .highlight .vi, .highlight .vc, .highlight .vg, .highlight .o, .highlight .p, .highlight .w, .highlight .nn, .highlight .nx, .highlight .ni, .highlight .ne, .highlight .nl, .highlight .nt, .highlight .nd { color: var(--ma-ink) !important; font-weight: 400 !important; font-style: normal !important; }
-.highlight .nf, .highlight .nc, .highlight .fm { color: var(--ma-ink) !important; font-weight: 600 !important; }
+/* token colours: generated from code_roles.py (scripts/generate_css.py) */
+.highlight .err { border: 0 !important; }
 
 /* ---------- callouts (admonitions): tinted, with a title bar ---------- */
 div.admonition, aside.admonition, .admonition {
@@ -150,6 +163,21 @@ pre { overflow-x: auto; }
 div.highlight pre > code { font-size: 1em !important; line-height: inherit !important; }
 div.highlight pre { margin: 0 !important; }
 
+/* syntax colours by role (src/michel_albert_sphinx/code_roles.py) */
+.highlight .bp, .highlight .kt, .highlight .nb { color: var(--ma-code-builtin) !important; font-weight: 400 !important; font-style: normal !important; }
+.highlight .go, .highlight .gp { color: var(--ma-code-comment) !important; font-weight: 400 !important; font-style: normal !important; }
+.highlight .c, .highlight .c1, .highlight .ch, .highlight .cm, .highlight .cp, .highlight .cpf, .highlight .cs { color: var(--ma-code-comment) !important; font-weight: 400 !important; font-style: italic !important; }
+.highlight .kc { color: var(--ma-code-constant) !important; font-weight: 400 !important; font-style: normal !important; }
+.highlight .nd { color: var(--ma-code-decorator) !important; font-weight: 400 !important; font-style: normal !important; }
+.highlight .err, .highlight .gr, .highlight .gt { color: var(--ma-code-error) !important; font-weight: 600 !important; font-style: normal !important; }
+.highlight .fm, .highlight .nc, .highlight .ne, .highlight .nf { color: var(--ma-code-function) !important; font-weight: 600 !important; font-style: normal !important; }
+.highlight .na, .highlight .nt { color: var(--ma-code-key) !important; font-weight: 400 !important; font-style: normal !important; }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .ow { color: var(--ma-code-keyword) !important; font-weight: 600 !important; font-style: normal !important; }
+.highlight .esc, .highlight .g, .highlight .gd, .highlight .ge, .highlight .ges, .highlight .gh, .highlight .gi, .highlight .gs, .highlight .gu, .highlight .n, .highlight .ni, .highlight .nl, .highlight .nn, .highlight .no, .highlight .nv, .highlight .nx, .highlight .py, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm, .highlight .w, .highlight .x { color: var(--ma-code-name) !important; font-weight: 400 !important; font-style: normal !important; }
+.highlight .il, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo { color: var(--ma-code-number) !important; font-weight: 400 !important; font-style: normal !important; }
+.highlight .o, .highlight .p, .highlight .pm { color: var(--ma-code-operator) !important; font-weight: 400 !important; font-style: normal !important; }
+.highlight .dl, .highlight .l, .highlight .ld, .highlight .s, .highlight .s1, .highlight .s2, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sr, .highlight .ss, .highlight .sx { color: var(--ma-code-string) !important; font-weight: 400 !important; font-style: normal !important; }
+
 /* sphinx_immaterial adapter. Dark = the theme's own "slate" scheme (palette enabled in conf-sphinx_immaterial.py with
    prefers-color-scheme media, so it follows the OS until the reader uses the header toggle; choosing light sets
    scheme=default, which never receives dark tokens). Theme colours come from --md-* variables mapped to tokens. */
@@ -171,9 +199,9 @@ body[data-md-color-scheme][data-md-color-primary] {
   --md-code-hl-color: var(--ma-accent); --md-code-hl-color--light: var(--ma-accent-subtle);
   --md-code-hl-keyword-color: var(--ma-code-keyword); --md-code-hl-string-color: var(--ma-code-string);
   --md-code-hl-number-color: var(--ma-code-number); --md-code-hl-comment-color: var(--ma-code-comment);
-  --md-code-hl-special-color: var(--ma-accent); --md-code-hl-function-color: var(--ma-ink); --md-code-hl-constant-color: var(--ma-ink);
-  --md-code-hl-name-color: var(--ma-ink); --md-code-hl-operator-color: var(--ma-ink-muted); --md-code-hl-punctuation-color: var(--ma-ink-muted);
-  --md-code-hl-generic-color: var(--ma-ink-muted); --md-code-hl-variable-color: var(--ma-ink);
+  --md-code-hl-special-color: var(--ma-code-decorator); --md-code-hl-function-color: var(--ma-code-function); --md-code-hl-constant-color: var(--ma-code-constant);
+  --md-code-hl-name-color: var(--ma-code-name); --md-code-hl-operator-color: var(--ma-code-operator); --md-code-hl-punctuation-color: var(--ma-code-operator);
+  --md-code-hl-generic-color: var(--ma-code-comment); --md-code-hl-variable-color: var(--ma-code-name);
   --md-typeset-table-color: var(--ma-line); --md-typeset-table-color--light: var(--ma-surface-300);
   --md-typeset-kbd-color: var(--ma-surface-200); --md-typeset-kbd-accent-color: var(--ma-surface-200); --md-typeset-kbd-border-color: var(--ma-line-strong);
   --md-typeset-mark-color: var(--ma-warn-subtle); --md-warning-fg-color: var(--ma-ink); --md-warning-bg-color: var(--ma-warn-subtle);

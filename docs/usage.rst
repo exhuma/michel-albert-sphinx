@@ -9,7 +9,7 @@ Add the package to the project's documentation dependencies:
 .. code-block:: toml
 
    [project.optional-dependencies]
-   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.3.1"]
+   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.4.0"]
 
 Configure
 ---------
@@ -79,6 +79,18 @@ Options
    The contour lines are generated from this text, by default the ``project``
    name, so each project gets its own terrain. The same seed always gives the
    same lines.
+
+Pygments styles
+---------------
+
+The package registers ``michel-albert-light`` and ``michel-albert-dark`` as
+Pygments styles, built from the same tokens as the stylesheet. Sphinx projects
+don't need them (the stylesheet colours code), but any other tool that
+highlights with Pygments can use them by name:
+
+.. code-block:: console
+
+   $ pygmentize -O style=michel-albert-dark -f terminal256 example.py
 
 Change the look
 ---------------
