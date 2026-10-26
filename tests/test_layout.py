@@ -73,3 +73,11 @@ def test_switches(tmp_path):
     out = build(tmp_path, "michel_albert_margin_notes=0", "michel_albert_home_header=0")
     assert not asides((out / "style-reference.html").read_text(encoding="utf-8"))
     assert "ma-lede" not in (out / "index.html").read_text(encoding="utf-8")
+
+
+def test_lede_band_never_wider_than_its_paragraph():
+    """Regression (0.3.1): the band kept a fixed 29em width on phones and made the page scroll sideways."""
+    css = (ROOT / "src/michel_albert_sphinx/static/michel-albert.css").read_text(encoding="utf-8")
+    rule = re.search(r"\.md-typeset \.ma-lede::after \{([^}]*)\}", css)
+    assert rule, "lede band rule missing"
+    assert "max-width: 100%" in rule.group(1)

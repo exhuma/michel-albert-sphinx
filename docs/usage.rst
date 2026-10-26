@@ -9,7 +9,7 @@ Add the package to the project's documentation dependencies:
 .. code-block:: toml
 
    [project.optional-dependencies]
-   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.3.0"]
+   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.3.1"]
 
 Configure
 ---------

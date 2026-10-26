@@ -288,7 +288,7 @@ html .md-footer-meta.md-typeset a { color: var(--ma-accent); text-decoration: un
 }
 .md-typeset .ma-lede { font-size: 1.1875em; line-height: 1.4737; color: var(--ma-ink-muted); max-width: 29em; margin-bottom: 1.75em; }
 .md-typeset .ma-lede::after {
-  content: ""; display: block; width: var(--ma-measure); height: 3px; margin-top: 1.1em; background: var(--ma-clay);
+  content: ""; display: block; width: var(--ma-measure); max-width: 100%; height: 3px; margin-top: 1.1em; background: var(--ma-clay);
 }
 @media screen and (min-width: 76.25em) {
   body:has(.ma-aside) .md-typeset .ma-lede::after { width: var(--ma-wide); }

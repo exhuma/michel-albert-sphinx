@@ -10,7 +10,7 @@ Add the dependency (pin a tag):
 
 ```toml
 [project.optional-dependencies]
-docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.3.0"]
+docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.3.1"]
 ```
 
 Add the extension to `conf.py` and leave `html_theme` unset:
