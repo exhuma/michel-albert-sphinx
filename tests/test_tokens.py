@@ -74,3 +74,9 @@ def test_code_tokens_are_their_own_colours():
     for token in CODE:
         for theme in ("light", "dark"):
             assert COLORS[token][theme] not in reserved, (token, theme)
+
+
+def test_shadow_is_lighter_on_the_light_surface():
+    """The sheet's halo: black at .4 in dark, a much lighter warm tint in light."""
+    alpha = {theme: float(COLORS["shadow"][theme].rstrip(")").split(",")[-1]) for theme in ("light", "dark")}
+    assert 0 < alpha["light"] < alpha["dark"] <= 0.4

@@ -4,6 +4,10 @@ Style reference
 Every element the design system styles, on one page. Use it to check a
 change to the stylesheet in light and dark.
 
+Text is 18.5 px on laptops, with a line height of 1.62. On screens wider than
+the frame, the page is a sheet with a soft halo, and the contour lines around
+it fade toward the screen edges.
+
 Running text
 ------------
 

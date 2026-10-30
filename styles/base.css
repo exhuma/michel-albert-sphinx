@@ -1,7 +1,7 @@
 /* Content rules shared by every theme: type, links, code, callouts, tables, API entries, focus. */
 
 /* ---------- typography ---------- */
-body { font-family: var(--ma-sans); font-size: 16px; line-height: 1.5625; color: var(--ma-ink); background: var(--ma-surface-100); }
+body { font-family: var(--ma-sans); font-size: 16px; line-height: 1.62; color: var(--ma-ink); background: var(--ma-surface-100); }
 h1, h2, h3, h4, h5, h6 { font-family: var(--ma-sans) !important; font-weight: 600 !important; color: var(--ma-ink); }
 article h1, [role=main] h1, .body h1, main h1 { font-size: 2em; line-height: 1.1875; letter-spacing: -0.0078em; }
 article h2, [role=main] h2, .body h2, main h2 { font-size: 1.5em; line-height: 1.25; letter-spacing: 0; }

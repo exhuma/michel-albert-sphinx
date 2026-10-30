@@ -9,7 +9,7 @@ Add the package to the project's documentation dependencies:
 .. code-block:: toml
 
    [project.optional-dependencies]
-   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.4.0"]
+   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.5.0"]
 
 Configure
 ---------
@@ -43,9 +43,9 @@ Margin notes
 ------------
 
 A ``note``, ``tip``, ``hint`` or ``seealso`` that directly follows a paragraph
-or a list is set beside it in the margin on wide screens, and below it on
-narrow screens. The build pairs the two in one block, so reading order is the
-same for everyone. Several notes in a row stack in the margin.
+or a list is set beside it in the margin on screens 1365 px and wider, and
+below it on narrower screens. The build pairs the two in one block, so reading
+order is the same for everyone. Several notes in a row stack in the margin.
 
 A note stays in the text when it follows code, a table or a heading, or when it
 sits inside a list or another callout. Warnings, cautions and dangers always

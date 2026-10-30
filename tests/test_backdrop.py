@@ -62,3 +62,18 @@ def test_switch_off(tmp_path):
     out = build(tmp_path, "michel_albert_backdrop=0")
     assert not (out / "_static" / CSS).exists()
     assert CSS not in (out / "usage.html").read_text(encoding="utf-8")
+
+
+def test_tile_size_follows_the_generator(tmp_path):
+    """The CSS tile size comes from TILE, so the tile and its mask never disagree."""
+    css = (build(tmp_path) / "_static" / CSS).read_text(encoding="utf-8")
+    assert f"--ma-tile: {TILE}px;" in css
+    assert "1200px" not in css.replace(f"--ma-tile: {TILE}px;", "")
+
+
+def test_lines_fade_toward_the_screen_edges():
+    rules = (ROOT / "src/michel_albert_sphinx/backdrop.css").read_text(encoding="utf-8")
+    assert rules.count("mask-image: var(--ma-pattern), var(--ma-fade)") == 2  # prefixed and standard
+    assert rules.count("mask-image: var(--ma-pattern-accent), var(--ma-fade)") == 2
+    assert "mask-composite: intersect" in rules and "-webkit-mask-composite: source-in" in rules
+    assert "0 0 40px 4px var(--ma-shadow)" in rules  # the sheet's halo

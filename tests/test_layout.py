@@ -81,3 +81,20 @@ def test_lede_band_never_wider_than_its_paragraph():
     rule = re.search(r"\.md-typeset \.ma-lede::after \{([^}]*)\}", css)
     assert rule, "lede band rule missing"
     assert "max-width: 100%" in rule.group(1)
+
+
+def test_margin_notes_only_where_the_frame_fits():
+    """Regression (0.5.0): margin notes widen the frame; below its width the page scrolled sideways.
+
+    The frame is two sidebars, the content padding, prose, gap and margin (45 x the text size),
+    in rem at the theme's 125 % root; media queries count em at 16 px.
+    """
+    css = (ROOT / "styles/layout.css").read_text(encoding="utf-8")
+    text = float(re.search(r"--ma-text: ([.\d]+)rem", css).group(1))
+    sidebar = float(re.search(r"--ma-sidebar: ([.\d]+)rem", css).group(1))
+    pad = float(re.search(r"--ma-inner-pad: ([.\d]+)rem", css).group(1))
+    frame_px = (2 * sidebar + pad + 45 * text) * 20
+    wide = float(re.search(r"min-width: ([.\d]+)em\) \{\s*/\* pages with margin notes", css).group(1))
+    narrow = float(re.search(r"max-width: ([.\d]+)em\) \{\s*\.ma-aside, \.ma-aside-notes", css).group(1))
+    assert wide * 16 >= frame_px
+    assert narrow < wide and (wide - narrow) * 16 <= 1  # no gap between the two layouts

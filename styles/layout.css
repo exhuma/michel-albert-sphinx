@@ -4,8 +4,8 @@
      text size, so a line keeps ~65 characters at every size.
    - One centred frame on every page: navigation, prose, an optional margin, the table
      of contents. Without notes the contents column moves up beside the prose.
-   - Pages with margin notes get a margin column; code, tables and API signatures then
-     span prose + margin. Pages without notes stay compact.
+   - Pages with margin notes get a margin column from 1365 px; code, tables and API
+     signatures then span prose + margin. Pages without notes stay compact.
    - Margin notes: the build wraps a note with the block before it (div.ma-aside); on wide
      screens the note sits beside that block, on narrow screens below it, in source order.
    - The start page's first paragraph is a lede with a clay band (p.ma-lede).            */
@@ -13,7 +13,7 @@
 @media screen and (min-width: 175em) { html { font-size: 175%; } }   /* >= 2800 px */
 
 :root {
-  --ma-text: .8rem;                         /* body text size (16 px at the theme's 125 % root) */
+  --ma-text: .925rem;                       /* body text size (18.5 px at the theme's 125 % root) */
   --ma-measure: calc(var(--ma-text) * 29);  /* ~65 characters of Source Sans 3 */
   --ma-gap: calc(var(--ma-text) * 2);
   --ma-margin: calc(var(--ma-text) * 14);
@@ -22,9 +22,13 @@
   --ma-inner-pad: 2.4rem;                   /* the theme's content padding, both sides */
 }
 
-.md-typeset { font-size: var(--ma-text); line-height: 1.5625; }
+.md-typeset { font-size: var(--ma-text); line-height: 1.62; }
 .md-typeset .admonition, .md-typeset details { font-size: 1em; }
-.md-typeset h1 { color: var(--ma-ink); }
+
+/* vertical rhythm, in em so it holds at every root size */
+.md-typeset h1 { color: var(--ma-ink); font-size: 1.84em; line-height: 1.24; letter-spacing: -.006em; }
+.md-typeset h2 { margin-top: 1.664em; }    /* 2.6 x the text size (h2 is 1.5625em) */
+.md-typeset :is(p, ul, ol, dl) { margin-bottom: 1.2em; }
 .md-content__inner.md-typeset { max-width: var(--ma-measure); }
 
 @media screen and (min-width: 76.25em) {
@@ -34,7 +38,11 @@
   .md-grid { max-width: calc(2 * var(--ma-sidebar) + var(--ma-inner-pad) + var(--ma-wide)); }
   .md-main__inner { justify-content: flex-start; }
   .md-content { flex: 0 0 calc(var(--ma-inner-pad) + var(--ma-measure)); max-width: none; }
+}
 
+/* Margin notes need the whole frame: navigation, prose, gap, margin and table of contents
+   come to 68.225rem, 1365 px at the theme's 125 % root. Below that they stay in the text. */
+@media screen and (min-width: 85.3em) {
   /* pages with margin notes: the content column grows by the margin */
   body:has(.ma-aside) .md-content { flex-basis: calc(var(--ma-inner-pad) + var(--ma-wide)); }
 
@@ -65,8 +73,8 @@
   .ma-aside-notes > .admonition > :last-child { margin-bottom: 0; }
 }
 
-/* narrow screens: the wrapper disappears, the note follows its block as a normal callout */
-@media screen and (max-width: 76.1875em) {
+/* narrower screens: the wrapper disappears, the note follows its block as a normal callout */
+@media screen and (max-width: 85.2875em) {
   .ma-aside, .ma-aside-notes { display: contents; }
 }
 
@@ -78,6 +86,6 @@
 .md-typeset .ma-lede::after {
   content: ""; display: block; width: var(--ma-measure); max-width: 100%; height: 3px; margin-top: 1.1em; background: var(--ma-clay);
 }
-@media screen and (min-width: 76.25em) {
+@media screen and (min-width: 85.3em) {
   body:has(.ma-aside) .md-typeset .ma-lede::after { width: var(--ma-wide); }
 }
